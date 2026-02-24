@@ -87,7 +87,7 @@ const ResetPassword = () => {
                 };
 
                 const { data } = await axios.post(
-                    `https://kagajapp.onrender.com/api/auth//reset-password/${params.id}/${params.token}`,
+                    `${process.env.REACT_APP_BACKEND_URL}/api/auth//reset-password/${params.id}/${params.token}`,
                     {
                         "password": password,
                     },

@@ -1,18 +1,10 @@
 import react, { useEffect } from "react"
-
-import { useNavigate } from 'react-router-dom';
-
-import {
-    Stack,
-    Select,
-    Image
-} from '@chakra-ui/react'
+import { Image } from '@chakra-ui/react'
 import './home.css'
-import sushant from "../../sushant.jpg"
-import akshay from "../../akshay.jpg"
+import tejas from "../../tejas.jpg"
+import vicky from "../../vicky.jpg"
 
 const Home = () => {
-
     return (
         <div class="home">
             <div class="about-section">
@@ -41,25 +33,19 @@ const Home = () => {
                         <Image
                             borderRadius="full"
                             boxSize="150px"
-                            src={sushant}
-                            alt='Sushant'
+                            src={tejas}
+                            alt='Tejas'
                             marginLeft="37%"
 
                         />
                         <div class="container">
                             <div style={{ d: 'flex', textAlign: "center" }}>
                                 <b >Tejas Kamble</b>
-                                <p class="title" >CEO & Founder</p>
-                                <b>tejas2002@gmail.com</b>
+                                <p class="title" >Developer</p>
+                                <b>tejaskk.iit@gmail.com</b>
                             </div>
-
-
                             <p style={{ paddingTop: "2%", paddingBottom: "2%" }}>
-                                I am Tejas Kamble. Currently pursuing my bachelor's degree in Civil Engineering at IIT
-                                Dhanbad. I am well-versed in data structures and algorithms and have a keen interest in competitive
-                                programming and also have interest in Web Development. I have an industrial experience as <b> Full Stack Developer. </b>
-                                I am looking for <b>full time Oppurtunities. </b>
-                                Please have a look at my <b><a href="https://drive.google.com/drive/folders/1tJveFB8Oh66pee_5AK4ytAeauwlRXVz0?usp=drive_link">resume</a></b> and <b> <a href="https://www.linkedin.com/in/tejas-kamble-iitism/">LinkedIn</a></b> profile for better insight.
+                                I am passionate Software Developer with strong interest in Full Stack Web Development, DevOps and Competitive Programming. I have been <b>Specialist Coder</b> at Codeforces, 1700+ rated on Leetcode and 3 star at Codechef with overall 1000+ problem solved. I am open for any collaborations . I am <b>looking out for Full Time Oppurtunities</b> and also attaching my <b><a href="https://drive.google.com/drive/folders/1_3RmSg4AOz61_jGYBVlnw6LsJHWbgQMS?usp=sharing" target="_blank" style={{ textDecoration: "underline", color: "blue" }}>resume</a></b> for your reference.
                             </p>
 
                             <p padding><button class="button">Contact</button></p>
@@ -72,41 +58,24 @@ const Home = () => {
                         <Image
                             borderRadius="full"
                             boxSize="150px"
-                            src={akshay}
-                            alt='Akshay'
+                            src={vicky}
+                            alt='Vicky'
                             marginLeft="37%"
                         />
                         <div class="container">
                             <div style={{ d: 'flex', textAlign: "center" }}>
                                 <b>Vicky Singh</b>
-                                <p class="title" >CEO & Founder</p>
+                                <p class="title" >Developer</p>
                                 <b> vickysingh88050@gmail.com</b>
                             </div>
-                            <p style={{ paddingTop: "2%", paddingBottom: "2%" }}>I am passionate Software Developer having strong interest in competitive programming and developing my knack for Full Stack Development
-                                who have done <b>Internship at Innobyte as Full Stack Developer</b>. I have been <b>Specialist Coder</b> at Codeforces and 3 star at Codechef. I am open for any collaborations . I am <b>looking out for Full Time Oppurtunities</b> and also
-                                attaching my <b><a href="https://drive.google.com/file/d/1TZawwMqwF0502rj_9dtrmfhBa0hJfR1f/view?usp=drive_link">resume</a></b> for your reference.</p>
+                            <p style={{ paddingTop: "2%", paddingBottom: "2%" }}>
+                                I am passionate Software Developer having strong interest in competitive programming and developing my knack for Full Stack Development. I have been <b>Specialist Coder</b> at Codeforces, 1750+ rated on Leetcode and 3 star at Codechef with overall 800+ problem solved. I am open for any collaborations . I am <b>looking out for Full Time Oppurtunities</b> and also attaching my <b><a href="https://drive.google.com/file/d/1TZawwMqwF0502rj_9drmfhBa0hJfR1f/view?usp=drive_link" target="_blank" style={{ textDecoration: "underline", color: "blue" }}>resume</a></b> for your reference.
+                            </p>
 
                             <p><button class="button">Contact</button></p>
                         </div>
                     </div>
                 </div>
-
-                {/* <div class="column">
-                    <div class="card">
-                        <img src="https://bit.ly/dan-abramov" alt="John" width="100%"></img>
-                        <div class="container">
-                            <b>John Doe</b>
-                            <p class="title">Designer</p>
-                            <p style={{ paddingTop: "2%", paddingBottom: "2%" }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-                                Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
-                            <b> Email : john@example.com</b>
-                            <p><button class="button">Contact</button></p>
-                        </div>
-                    </div>
-                </div> */}
-
             </div >
         </div >
     );

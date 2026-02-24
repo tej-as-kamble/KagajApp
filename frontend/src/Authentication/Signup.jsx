@@ -82,7 +82,7 @@ const SignUp = () => {
             };
 
             const { data } = await axios.post(
-                "https://kagajapp.onrender.com/api/auth/signup",
+                `${process.env.REACT_APP_BACKEND_URL}/api/auth/signup`,
                 {
                     "firstName": firstName,
                     "lastName": lastName,

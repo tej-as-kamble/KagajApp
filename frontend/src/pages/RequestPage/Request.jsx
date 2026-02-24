@@ -69,7 +69,7 @@ const Request = () => {
         }
         if (selectedFile.type === "application/pdf") {
             const path = selectedFile.name + v4();
-            const url = `https://firebasestorage.googleapis.com/v0/b/kagaj-fe973.appspot.com/o/files%2F${path}?alt=media&token=7c3a0243-ebb5-40f6-a6f7-22ccaf96bf27&_gl=1*1jftra6*_ga*MTY1ODQxMTgxMy4xNjk2ODg1Nzc2*_ga_CW55HF8NVT*MTY5Njg4NTc3Ni4xLjEuMTY5Njg4ODYyNi41MS4wLjA.`
+            const url = `https://firebasestorage.googleapis.com/v0/b/kagaj-fe973.appspot.com/o/files%2F${path}?alt=media`
             const fileRef = ref(storage, `files/${path}`);
             uploadBytes(fileRef, selectedFile).then(() => {
                 alert("File Uploaded");
@@ -110,7 +110,7 @@ const Request = () => {
             };
 
             const { data } = await axios.post(
-                "https://kagajapp.onrender.com/api/issue/submitted",
+                `${process.env.REACT_APP_BACKEND_URL}/api/issue/submitted`,
                 {
                     "url": pdfUrl,
                     "id": selectedid,
@@ -162,7 +162,7 @@ const Request = () => {
             };
 
             const Data = await axios.get(
-                "https://kagajapp.onrender.com/api/issue/getall",
+                `${process.env.REACT_APP_BACKEND_URL}/api/issue/getall`,
                 config
             );
 
@@ -236,7 +236,7 @@ const Request = () => {
             };
 
             const { data } = await axios.post(
-                "https://kagajapp.onrender.com/api/issue/rejected",
+                `${process.env.REACT_APP_BACKEND_URL}/api/issue/rejected`,
                 {
                     "id": id,
                 },

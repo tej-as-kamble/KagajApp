@@ -76,7 +76,7 @@ const Login = () => {
             };
 
             const { data } = await axios.post(
-                "https://kagajapp.onrender.com/api/auth/login",
+                `${process.env.REACT_APP_BACKEND_URL}/api/auth/login`,
                 {
                     "emailId": email,
                     "password": password,
@@ -130,7 +130,7 @@ const Login = () => {
             };
 
             const { data } = await axios.post(
-                "https://kagajapp.onrender.com/api/auth/forgot-password",
+                `${process.env.REACT_APP_BACKEND_URL}/api/auth/forgot-password`,
                 {
                     "emailId": forgotemail,
                 },

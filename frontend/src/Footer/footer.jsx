@@ -59,7 +59,7 @@ const Footer = () => {
                                 alt='Logo'
                             />
                         </Box>
-                        <Text fontSize={'sm'}>© 2023 Kagaj. All rights reserved</Text>
+                        <Text fontSize={'sm'}>© 2025 Kagaj. All rights reserved</Text>
                         <Stack direction={'row'} spacing={6}>
                             <SocialButton label={'Twitter'} href={'#'}>
                                 <FaTwitter />
