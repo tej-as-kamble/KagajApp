@@ -6,10 +6,6 @@ const jwt = require('jsonwebtoken')
 const nodemailer = require("nodemailer");
 
 
-
-const JWT_SECRET = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
-
-
 exports.signup = async (req, res) => {
     const { firstName, lastName, state, city, emailId, password, isAdmin, profilePicture } = req.body;
     console.log(firstName, lastName, emailId, password, isAdmin, profilePicture)
@@ -104,24 +100,24 @@ exports.forgotpassword = async (req, res) => {
 
         if (user) {
 
-            const secret = JWT_SECRET + user.hashPassword;
+            const secret = process.env.JWT_SECRET + user.hashPassword;
             const token = jwt.sign({ email: user.emailId, id: user._id }, secret, {
-                expiresIn: "5m"
+                expiresIn: "10m"
             })
-            const link = `http://localhost:3000/reset-password/${user._id}/${token}`;
+            const link = `${process.env.FRONTEND_URL}/reset-password/${user._id}/${token}`;
             var transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                    user: 'sendermail169@gmail.com',
-                    pass: 'djlhryfqbkxezfgh'
+                    user: 'kagaj.noreply@gmail.com',
+                    pass: `${process.env.RESET_EMAIL_PASS}`
                 }
             });
 
             var mailOptions = {
-                from: 'youremail@gmail.com',
-                to: 'covidshield146@gmail.com',
-                subject: 'Password Reset',
-                text: link
+                from: '"Kagaj App" <kagaj.noreply@gmail.com>',
+                to: emailId,
+                subject: `Reset Your Password, ${user.firstName}!`,
+                text: `Hello ${user.firstName},\n\nA request to reset your password was made. If you did not make this request, please contact our security team immediately. \n\nUse this link: ${link}\n\nThis link is only valid for the next 10 minutes. \n\nRegards, \nTeam Kagaj App`
             };
 
             transporter.sendMail(mailOptions, function (error, info) {
@@ -149,7 +145,7 @@ exports.resetpassword = async (req, res) => {
         return res.status(400).json({ msg: "User Not Found" });
     }
 
-    const secret = JWT_SECRET + user.hashPassword;
+    const secret = process.env.JWT_SECRET + user.hashPassword;
     try {
         const verify = jwt.verify(token, secret);
         res.render("resetpassword", { email: verify.email, status: "Not Verified" })
@@ -167,9 +163,14 @@ exports.resetpassworddone = async (req, res) => {
         return res.status(400).json({ msg: "User Not Found" });
     }
 
-    const secret = JWT_SECRET + user.hashPassword;
+    const secret = process.env.JWT_SECRET + user.hashPassword;
     try {
-        const verify = jwt.verify(token, secret);
+        try {
+            const verify = jwt.verify(token, secret);
+        } catch (error) {
+            return res.status(401).json({ msg: "Token expired." });
+        }
+
         const hashPassword = await bcrypt.hash(password, 10);
 
         await User.updateOne({
@@ -182,7 +183,7 @@ exports.resetpassworddone = async (req, res) => {
         return res.status(201).json({ msg: "Password is Successfully Updated" });
         // res.render("resetpassword", { email: verify.email, status: "Verified" })
     } catch (error) {
-        return res.status(201).json({ msg: "Unable to Update password" });
+        return res.status(500).json({ msg: "Unable to Update password" });
     }
 };
 

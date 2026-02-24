@@ -87,7 +87,7 @@ const ResetPassword = () => {
                 };
 
                 const { data } = await axios.post(
-                    `${process.env.REACT_APP_BACKEND_URL}/api/auth//reset-password/${params.id}/${params.token}`,
+                    `${process.env.REACT_APP_BACKEND_URL}/api/auth/reset-password/${params.id}/${params.token}`,
                     {
                         "password": password,
                     },
@@ -108,7 +108,7 @@ const ResetPassword = () => {
 
             } catch (error) {
                 toast({
-                    title: "Error Occured!",
+                    title: error.response.data.msg || "Error Occured!",
                     description: error.response.data.message,
                     status: "error",
                     duration: 5000,

@@ -12,7 +12,7 @@ app.use(cors());
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }))
 mongoose.connect(
-    `mongodb+srv://${process.env.MONGO_DB_USERNAME}:${process.env.MONGO_DB_PASSWORD}@cluster0.jy0uzsn.mongodb.net/${process.env.MONGO_DB_DATABASE}?retryWrites=true&w=majority`,
+    process.env.MONGO_URI,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -26,8 +26,10 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/issue', issueRoutes);
 
-app.listen(process.env.PORT_NUMBER, () => {
-    console.log("Connected");
+const PORT = process.env.PORT_NUMBER || 5000;
+
+app.listen(PORT, () => {
+    console.log(`Connected on port ${PORT}`);
 })
 
 
